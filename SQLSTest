@@ -6,14 +6,18 @@ import java.sql.Statement;
 
 public class SQLSTest {
 	public static void main(String[] args) {
+		String ipAdd="192.168.3.26:1433";//你的SQLServer地址
+		String database="sqlserver";//你的数据库名称
+		String userName="sa";//你的数据库登录名
+		String passwd="123456";//你的数据库登录密码
 		Connection conn;
 		Statement stmt;
 		ResultSet rs;
-		String url = "jdbc:sqlserver://192.168.3.26:1433;DatabaseName=DataFillingSystem;";
+		String url = "jdbc:sqlserver://"+ipAdd+";DatabaseName"+database+";";
 		String sql = "select count(id) as count from JBXX_ZiRanXinXi";
 		try {
 			// 连接数据库
-			conn = DriverManager.getConnection(url, "sa", "Sdcm123456");
+			conn = DriverManager.getConnection(url, userName, passwd);
 			// 建立Statement对象
 			stmt = conn.createStatement();
 			/**
